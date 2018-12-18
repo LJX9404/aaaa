@@ -12,7 +12,7 @@
             <div class="environment">
              <text class="title">空气质量</text>
              <text class="goodinfo">优</text>
-             <div class="mypro"></div>
+             <div class="mypro "></div>
              <div class="protext">
                <text class="proinfo">pm</text>
                <text class="proinfo">2.5</text>
@@ -27,7 +27,7 @@
             <div class="environment">
               <text class="title">舒适指数</text>
               <text class="comfortLevel">一般 </text>
-              <div class="mypro"></div>
+              <div class="mypro justSo"></div>
               <div class="protext">
                 <text class="proinfo">湿度</text>
                 <text class="proinfo">40%</text>
@@ -135,7 +135,7 @@ color:rgba(102,102,102,1);
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  background:rgba(249,249,249,1);
+  background-color:rgba(249,249,249,1);
   text-align: center;
   margin-left: 20px;
   align-items: center
@@ -144,6 +144,7 @@ color:rgba(102,102,102,1);
 
 .title{
 font-size:23px;
+line-height: 23px;
 font-family:PingFang-SC-Medium;
 font-weight:500;
 color:rgba(102,102,102,1);
@@ -156,6 +157,7 @@ margin-top: 24px
 }
 .xieloutext{
 font-size:31px;
+line-height: 31px;
 font-family:PingFang-SC-Bold;
 font-weight:bold;
 color:rgba(73,73,73,1);
@@ -164,6 +166,7 @@ margin-top: 49px
 
 .comfortLevel{
 font-size:60px;
+line-height: 60px;
 font-family:PingFang-SC-Bold;
 font-weight:bold;
 color:rgba(102,102,102,1);
@@ -172,6 +175,7 @@ margin-top: 51px
 .goodinfo{
 margin-top: 51px;
 font-size:70px;
+line-height: 70px;
 font-family:PingFang-SC-Bold;
 font-weight:bold;
 color:rgba(200,175,112,1);
@@ -179,19 +183,23 @@ color:rgba(200,175,112,1);
 .mypro{
 width:174px;
 height:6px;
-background:rgba(232,238,245,1);
+background-color:rgba(232,238,245,1);
 border-radius:3px;
-margin-top: 55px
+margin-top: 46px
 }
 .protext{
   width: 174px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* margin-top: 41px */
+  margin-top: 23px
+}
+.justSo{
+  margin-top: 55px;
 }
 .proinfo{
 font-size:23px;
+line-height: 23px;
 font-family:PingFangSC-Semibold;
 font-weight:600;
 color:rgba(102,102,102,1);

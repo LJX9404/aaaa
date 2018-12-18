@@ -12643,13 +12643,14 @@ module.exports = {
     "borderTopLeftRadius": "8",
     "borderBottomLeftRadius": "8",
     "borderBottomRightRadius": "8",
-    "background": "rgba(249,249,249,1)",
+    "backgroundColor": "rgba(249,249,249,1)",
     "textAlign": "center",
     "marginLeft": "20",
     "alignItems": "center"
   },
   "title": {
     "fontSize": "23",
+    "lineHeight": "23",
     "fontFamily": "PingFang-SC-Medium",
     "fontWeight": "500",
     "color": "rgba(102,102,102,1)",
@@ -12662,6 +12663,7 @@ module.exports = {
   },
   "xieloutext": {
     "fontSize": "31",
+    "lineHeight": "31",
     "fontFamily": "PingFang-SC-Bold",
     "fontWeight": "bold",
     "color": "rgba(73,73,73,1)",
@@ -12669,6 +12671,7 @@ module.exports = {
   },
   "comfortLevel": {
     "fontSize": "60",
+    "lineHeight": "60",
     "fontFamily": "PingFang-SC-Bold",
     "fontWeight": "bold",
     "color": "rgba(102,102,102,1)",
@@ -12677,6 +12680,7 @@ module.exports = {
   "goodinfo": {
     "marginTop": "51",
     "fontSize": "70",
+    "lineHeight": "70",
     "fontFamily": "PingFang-SC-Bold",
     "fontWeight": "bold",
     "color": "rgba(200,175,112,1)"
@@ -12684,18 +12688,23 @@ module.exports = {
   "mypro": {
     "width": "174",
     "height": "6",
-    "background": "rgba(232,238,245,1)",
+    "backgroundColor": "rgba(232,238,245,1)",
     "borderRadius": "3",
-    "marginTop": "55"
+    "marginTop": "46"
   },
   "protext": {
     "width": "174",
     "display": "flex",
     "flexDirection": "row",
-    "justifyContent": "space-between"
+    "justifyContent": "space-between",
+    "marginTop": "23"
+  },
+  "justSo": {
+    "marginTop": "55"
   },
   "proinfo": {
     "fontSize": "23",
+    "lineHeight": "23",
     "fontFamily": "PingFangSC-Semibold",
     "fontWeight": "600",
     "color": "rgba(102,102,102,1)"
@@ -12896,7 +12905,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("舒适指数")]), _c('text', {
     staticClass: ["comfortLevel"]
   }, [_vm._v("一般 ")]), _c('div', {
-    staticClass: ["mypro"]
+    staticClass: ["mypro", "justSo"]
   }), _c('div', {
     staticClass: ["protext"]
   }, [_c('text', {
