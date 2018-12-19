@@ -42,9 +42,9 @@
          
          
         </div>
-      <div class="boxCommon mangerbox"  >
-             <text class="mangerinfo">我的智能厨房</text>
-             <text class="deviceinfo">添加设备设备 ></text>
+      <div class="boxCommon secondnav"  >
+             <text class="myChufang">我的智能厨房</text>
+             <text class="addDevice">添加设备  ></text>
           </div>
 
        <div class="boxtwo boxCommon">
@@ -56,26 +56,32 @@
               <div :class="[isActive ? activePerBox :inactivePerBox]" v-for="(item,index) in list" :key="index"  @click="detil(item.id)">
                 <div :class="[isActive ? activeEveryBox :inactiveEveryBox]">
                   <image class="image" :src="item.img" alt=""></image>
-                <text class="info">{{item.text}}</text>
+                  <div :class="[isActive ? activeInfoBox :inactiveInfoBox]">
+                    <text class="info">{{item.text}}</text>
+                    <text class="status">{{item.status}}</text>
+                    </div>
                 </div>
                 </div>
              
       </div>
 
-        <div class="boxtwo boxCommon">
+        <!-- <div class="boxtwo boxCommon">
             <text>安全洁净</text>
            <image :src="openbtn" :class="[isActiveTwo ? activeClass :errorClass]" @click="changeView('two')" ></image>
-        </div>
+        </div>  -->
 
-        <div :class="[isActiveTwo ? activeBox :inactiveBox]" >
+         <!-- <div :class="[isActiveTwo ? activeBox :inactiveBox]" >
               <div :class="[isActiveTwo ? activePerBox :inactivePerBox]"  v-for="(item,index) in listTwo" :key="index"  @click="detil(item.id)">
                    <div :class="[isActiveTwo ? activeEveryBox :inactiveEveryBox]">
                   <image class="image" :src="item.img" alt=""></image>
-                <text class="info">{{item.text}}</text>
+                 <div :class="[isActiveTwo ? activeInfoBox :inactiveInfoBox]">
+                    <text class="info">{{item.text}}</text>
+                    <text class="status">{{item.status}}</text>
+                    </div>
                 </div>
               </div>
               <div class="emptybox"></div>
-      </div>
+      </div>  -->
       </div>
       <div >
       <router-view></router-view>
@@ -102,13 +108,16 @@ export default {
       activeBox:'boxOpen',
       inactiveBox:'boxClose',
       activePerBox:'perBoxOpen',
+      activeInfoBox:"infoboxOpen",
+      inactiveInfoBox:"infoboxClose",
       inactivePerBox:'perBoxClose',
       activeEveryBox:'EveryBoxOpen',
       inactiveEveryBox:'EveryBoxClose',
       a:"",
       openbtn:'/src/assets/viewOne.png',
-      list:[{img:"/src/assets/1.png",text:"蒸箱",id:"steam"},{img:"/src/assets/1.png",text:"烤箱",id:"oven"},{img:"/src/assets/1.png",text:"蒸微一体机",id:"steamMicro"},{img:"/src/assets/1.png",text:"灶具",id:"cooker"}],
-      listTwo:[{img:"/src/assets/add-dev.png",text:"消毒柜",id:"sterilizer"},{img:"/src/assets/add-dev.png",text:"岛式机",id:'islandMachine'},{img:"/src/assets/add-dev.png",text:"热水器",id:'heater'},{img:"/src/assets/add-dev.png",text:"洗碗槽",id:'sink'},{img:"/src/assets/add-dev.png",text:"水槽洗碗机",id:'dishWasher'}],
+      list:[{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网'},{img:"/src/assets/youyanji1.png",text:"烤箱",id:"oven",status:"故障"},{img:"/src/assets/zhengwei1.png",text:"蒸微一体机",id:"steamMicro",status:"运行中"},{img:"/src/assets/zaoju.png",text:"灶具",id:"cooker",status:"待机"},{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网'}],
+      listTwo:[{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网'},{img:"/src/assets/youyanji1.png",text:"烤箱",id:"oven",status:"故障"},{img:"/src/assets/zhengwei1.png",text:"蒸微一体机",id:"steamMicro",status:"运行中"},{img:"/src/assets/zaoju.png",text:"灶具",id:"cooker",status:"待机"},{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网'}],
+    //  listTwo:[{img:"/src/assets/add-dev.png",text:"消毒柜",id:"sterilizer"},{img:"/src/assets/add-dev.png",text:"岛式机",id:'islandMachine'},{img:"/src/assets/add-dev.png",text:"热水器",id:'heater'},{img:"/src/assets/add-dev.png",text:"洗碗槽",id:'sink'},{img:"/src/assets/add-dev.png",text:"水槽洗碗机",id:'dishWasher'}],
       count:0,
       flag:0,
       info:null
@@ -169,6 +178,7 @@ export default {
 <style scoped>
 .container{
   width: 750px;
+  height: 2595px;
   background-color: #F4F4F4;
   padding-top: 20px;
   padding-left: 20px;
@@ -301,28 +311,79 @@ font-family:PingFangSC-Semibold;
 font-weight:600;
 color:rgba(102,102,102,1);
 }
+.secondnav{
+  width: 670px;
+  height: 133px;
+  margin-left: 20px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(206,215,219,1);
+  padding-top: 62px;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between
+}
+.myChufang{
+  font-size:32px;
+  line-height: 32px;
+  font-family:PingFang-SC-Medium;
+  font-weight:500;
+  color:rgba(102,102,102,1);
+}
+.addDevice{
+font-size:27px;
+line-height: 27px;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(154,154,154,1);
+margin-right: 0px
+}
+.boxtwo{
+  width: 670px;
+  height: 110px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between
+}
 .tastyLife{
 font-size:31px;
+line-height: 31px;
+margin-top: 36px;
 font-family:PingFang-SC-Bold;
 font-weight:bold;
 color:rgba(35,38,39,1);
 }
 .viewOpen{
-  width: 50px;
-  height: 50px;
-  
+  width: 44px;
+  height: 44px;
+  margin-top: 29px
 }
 .viewClose{
-  width: 50px;
-  height: 50px;
-  
+  width: 44px;
+  height: 44px;
+  margin-top: 29px  
 }
 .boxOpen{
-  padding: 20px;
-  font-size: 50px;
+  width: 710px;
+  height: 188px;
+  position: relative;
+}
+.infoboxOpen{
+  width: 710px;
+  height: 188px;
+  position:absolute;
+  top: 0px;
+  left:0px;
+  background-color:rgba(200,175,112,1);
+  opacity:0.9;
+}
+.infoboxClose{
+
 }
 .boxClose{
-   padding: 20px;
+  width: 710px;
+  height: 188px;
   display: flex;
   flex: 2;
   flex-direction: row;
@@ -351,11 +412,28 @@ color:rgba(35,38,39,1);
   border-bottom-right-radius: 20px;
 }
 .image {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 108px;
+  margin-top: 40px;
+  margin-left: 52px
 }
 .info{
-  margin-left: 40px
+ font-size:31px;
+ line-height: 31px;
+ margin-top: 56px;
+ margin-left: 262px;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(255,255,255,1);
+}
+.status{
+font-size:27px;
+line-height: 27px;
+margin-top: 24px;
+margin-left: 262px;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(255,255,255,1);
 }
 .EveryBoxOpen{
   display: flex;

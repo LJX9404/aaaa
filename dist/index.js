@@ -3552,6 +3552,7 @@ module.exports = __vue_exports__
 module.exports = {
   "container": {
     "width": "750",
+    "height": "2595",
     "backgroundColor": "#F4F4F4",
     "paddingTop": "20",
     "paddingLeft": "20",
@@ -3677,32 +3678,76 @@ module.exports = {
     "fontWeight": "600",
     "color": "rgba(102,102,102,1)"
   },
+  "secondnav": {
+    "width": "670",
+    "height": "133",
+    "marginLeft": "20",
+    "borderBottomStyle": "solid",
+    "borderBottomWidth": "1",
+    "borderBottomColor": "rgba(206,215,219,1)",
+    "paddingTop": "62",
+    "display": "flex",
+    "flexDirection": "row",
+    "justifyContent": "space-between"
+  },
+  "myChufang": {
+    "fontSize": "32",
+    "lineHeight": "32",
+    "fontFamily": "PingFang-SC-Medium",
+    "fontWeight": "500",
+    "color": "rgba(102,102,102,1)"
+  },
+  "addDevice": {
+    "fontSize": "27",
+    "lineHeight": "27",
+    "fontFamily": "PingFang-SC-Medium",
+    "fontWeight": "500",
+    "color": "rgba(154,154,154,1)",
+    "marginRight": "0"
+  },
+  "boxtwo": {
+    "width": "670",
+    "height": "110",
+    "marginLeft": "20",
+    "display": "flex",
+    "flexDirection": "row",
+    "justifyContent": "space-between"
+  },
   "tastyLife": {
     "fontSize": "31",
+    "lineHeight": "31",
+    "marginTop": "36",
     "fontFamily": "PingFang-SC-Bold",
     "fontWeight": "bold",
     "color": "rgba(35,38,39,1)"
   },
   "viewOpen": {
-    "width": "50",
-    "height": "50"
+    "width": "44",
+    "height": "44",
+    "marginTop": "29"
   },
   "viewClose": {
-    "width": "50",
-    "height": "50"
+    "width": "44",
+    "height": "44",
+    "marginTop": "29"
   },
   "boxOpen": {
-    "paddingTop": "20",
-    "paddingRight": "20",
-    "paddingBottom": "20",
-    "paddingLeft": "20",
-    "fontSize": "50"
+    "width": "710",
+    "height": "188",
+    "position": "relative"
+  },
+  "infoboxOpen": {
+    "width": "710",
+    "height": "188",
+    "position": "absolute",
+    "top": "0",
+    "left": "0",
+    "backgroundColor": "rgba(200,175,112,1)",
+    "opacity": 0.9
   },
   "boxClose": {
-    "paddingTop": "20",
-    "paddingRight": "20",
-    "paddingBottom": "20",
-    "paddingLeft": "20",
+    "width": "710",
+    "height": "188",
     "display": "flex",
     "flex": 2,
     "flexDirection": "row",
@@ -3731,11 +3776,28 @@ module.exports = {
     "borderBottomRightRadius": "20"
   },
   "image": {
-    "width": "100",
-    "height": "100"
+    "width": "120",
+    "height": "108",
+    "marginTop": "40",
+    "marginLeft": "52"
   },
   "info": {
-    "marginLeft": "40"
+    "fontSize": "31",
+    "lineHeight": "31",
+    "marginTop": "56",
+    "marginLeft": "262",
+    "fontFamily": "PingFang-SC-Medium",
+    "fontWeight": "500",
+    "color": "rgba(255,255,255,1)"
+  },
+  "status": {
+    "fontSize": "27",
+    "lineHeight": "27",
+    "marginTop": "24",
+    "marginLeft": "262",
+    "fontFamily": "PingFang-SC-Medium",
+    "fontWeight": "500",
+    "color": "rgba(255,255,255,1)"
   },
   "EveryBoxOpen": {
     "display": "flex",
@@ -3850,6 +3912,12 @@ var modal = weex.requireModule('modal'); //
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 var closebtn = '/src/assets/viewTwo.png';
 var toggelbtn = '/src/assets/viewOne.png';
@@ -3866,13 +3934,16 @@ exports.default = {
       activeBox: 'boxOpen',
       inactiveBox: 'boxClose',
       activePerBox: 'perBoxOpen',
+      activeInfoBox: "infoboxOpen",
+      inactiveInfoBox: "infoboxClose",
       inactivePerBox: 'perBoxClose',
       activeEveryBox: 'EveryBoxOpen',
       inactiveEveryBox: 'EveryBoxClose',
       a: "",
       openbtn: '/src/assets/viewOne.png',
-      list: [{ img: "/src/assets/1.png", text: "蒸箱", id: "steam" }, { img: "/src/assets/1.png", text: "烤箱", id: "oven" }, { img: "/src/assets/1.png", text: "蒸微一体机", id: "steamMicro" }, { img: "/src/assets/1.png", text: "灶具", id: "cooker" }],
-      listTwo: [{ img: "/src/assets/add-dev.png", text: "消毒柜", id: "sterilizer" }, { img: "/src/assets/add-dev.png", text: "岛式机", id: 'islandMachine' }, { img: "/src/assets/add-dev.png", text: "热水器", id: 'heater' }, { img: "/src/assets/add-dev.png", text: "洗碗槽", id: 'sink' }, { img: "/src/assets/add-dev.png", text: "水槽洗碗机", id: 'dishWasher' }],
+      list: [{ img: "/src/assets/daoshiji1.png", text: "蒸箱", id: "steam", status: '联网' }, { img: "/src/assets/youyanji1.png", text: "烤箱", id: "oven", status: "故障" }, { img: "/src/assets/zhengwei1.png", text: "蒸微一体机", id: "steamMicro", status: "运行中" }, { img: "/src/assets/zaoju.png", text: "灶具", id: "cooker", status: "待机" }, { img: "/src/assets/daoshiji1.png", text: "蒸箱", id: "steam", status: '联网' }],
+      listTwo: [{ img: "/src/assets/daoshiji1.png", text: "蒸箱", id: "steam", status: '联网' }, { img: "/src/assets/youyanji1.png", text: "烤箱", id: "oven", status: "故障" }, { img: "/src/assets/zhengwei1.png", text: "蒸微一体机", id: "steamMicro", status: "运行中" }, { img: "/src/assets/zaoju.png", text: "灶具", id: "cooker", status: "待机" }, { img: "/src/assets/daoshiji1.png", text: "蒸箱", id: "steam", status: '联网' }],
+      //  listTwo:[{img:"/src/assets/add-dev.png",text:"消毒柜",id:"sterilizer"},{img:"/src/assets/add-dev.png",text:"岛式机",id:'islandMachine'},{img:"/src/assets/add-dev.png",text:"热水器",id:'heater'},{img:"/src/assets/add-dev.png",text:"洗碗槽",id:'sink'},{img:"/src/assets/add-dev.png",text:"水槽洗碗机",id:'dishWasher'}],
       count: 0,
       flag: 0,
       info: null
@@ -4277,46 +4348,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": item.img,
         "alt": ""
       }
-    }), _c('text', {
+    }), _c('div', {
+      class: [_vm.isActive ? _vm.activeInfoBox : _vm.inactiveInfoBox]
+    }, [_c('text', {
       staticClass: ["info"]
-    }, [_vm._v(_vm._s(item.text))])])])
-  })), _c('div', {
-    staticClass: ["boxtwo", "boxCommon"]
-  }, [_c('text', [_vm._v("安全洁净")]), _c('image', {
-    class: [_vm.isActiveTwo ? _vm.activeClass : _vm.errorClass],
-    attrs: {
-      "src": _vm.openbtn
-    },
-    on: {
-      "click": function($event) {
-        _vm.changeView('two')
-      }
-    }
-  })]), _c('div', {
-    class: [_vm.isActiveTwo ? _vm.activeBox : _vm.inactiveBox]
-  }, [_vm._l((_vm.listTwo), function(item, index) {
-    return _c('div', {
-      key: index,
-      class: [_vm.isActiveTwo ? _vm.activePerBox : _vm.inactivePerBox],
-      on: {
-        "click": function($event) {
-          _vm.detil(item.id)
-        }
-      }
-    }, [_c('div', {
-      class: [_vm.isActiveTwo ? _vm.activeEveryBox : _vm.inactiveEveryBox]
-    }, [_c('image', {
-      staticClass: ["image"],
-      attrs: {
-        "src": item.img,
-        "alt": ""
-      }
-    }), _c('text', {
-      staticClass: ["info"]
-    }, [_vm._v(_vm._s(item.text))])])])
-  }), _c('div', {
-    staticClass: ["emptybox"]
-  })], 2)]), _c('div', [_c('router-view')], 1)], 1)])
+    }, [_vm._v(_vm._s(item.text))]), _c('text', {
+      staticClass: ["status"]
+    }, [_vm._v(_vm._s(item.status))])])])])
+  }))]), _c('div', [_c('router-view')], 1)], 1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["boxCommon", "mangerbox"]
@@ -4376,12 +4415,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("40%")])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["boxCommon", "mangerbox"]
+    staticClass: ["boxCommon", "secondnav"]
   }, [_c('text', {
-    staticClass: ["mangerinfo"]
+    staticClass: ["myChufang"]
   }, [_vm._v("我的智能厨房")]), _c('text', {
-    staticClass: ["deviceinfo"]
-  }, [_vm._v("添加设备设备 >")])])
+    staticClass: ["addDevice"]
+  }, [_vm._v("添加设备  >")])])
 }]}
 module.exports.render._withStripped = true
 
