@@ -1,23 +1,27 @@
 import Vue from 'vue'
 
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import bar from "@/components/bar"
+import HelloWorld from '@/components/vr/HelloWorld'
+import bar from "@/components/teamCooking/bar"
 import home from "@/components/home"
-import myCooker from "@/components/myCooker"
+import myCooker from "@/components/chefButler/myCooker"
 
-import oven from "@/components/oven"
-import steam from "@/components/steam"
-import steamMicro from "@/components/steamMicro"
-import cooker from "@/components/cooker"
+import oven from "@/components/ovenP/oven"
+import steam from "@/components/steamP/steam"
+import traditionalCooking from "@/components/steamP/traditionalCooking"
+import steamMicro from "@/components/steamMicroP/steamMicro"
+import cooker from "@/components/cookerP/cooker"
+import echartsTime from "@/components/cookerP/echartsTime"
+import myDishwasher from "@/components/cookerP/myDishwasher"
+import pickTIme from "@/components/cookerP/pickTIme"
 
 
-import sink from "@/components/sink"
-import sterilizer from "@/components/sterilizer"
-import islandMachine from "@/components/islandMachine"
-import dishWasher from "@/components/dishWasher"
-import heater from "@/components/heater"
 
+import sink from "@/components/sinkP/sink"
+import sterilizer from "@/components/sterilizerP/sterilizer"
+import islandMachine from "@/components/islandMachineP/islandMachine"
+import dishWasher from "@/components/dishWasherP/dishWasher"
+import heater from "@/components/heaterP/heater"
 
 import moreMenu from "@/components/moreMenu"
 
@@ -80,6 +84,21 @@ module.exports = new Router({
       component: cooker,
     },
     {
+        path: '/echartsTime',
+        name: 'echartsTime',
+        component: echartsTime,
+      },
+      {
+          path: '/myDishwasher',
+          name: 'myDishwasher',
+          component: myDishwasher,
+        },
+          {
+          path: '/pickTIme',
+          name: 'pickTIme',
+          component: pickTIme,
+        },
+    {
       path: '/heater',
       name: 'heater',
       component: heater,
@@ -108,6 +127,11 @@ module.exports = new Router({
       path: '/moreMenu',
       name: 'moreMenu',
       component: moreMenu,
+    },
+    {
+      path: '/traditionalCooking',
+      name: 'traditionalCooking',
+      component: traditionalCooking,
     }
   ]
 })
