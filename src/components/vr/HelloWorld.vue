@@ -94,12 +94,7 @@ export default {
     return{
       isActive:true,
       openbtn:'/src/assets/viewOne.png',
-      list:[{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网',statusCode:"online"},
-      {img:"/src/assets/youyanji1.png",text:"烤箱",id:"oven",status:"故障",statusCode:"fault"},
-      {img:"/src/assets/zhengwei1.png",text:"蒸微一体机",id:"steamMicro",status:"运行中",statusCode:"working"},
-      {img:"/src/assets/zaoju.png",text:"灶具",id:"cooker",status:"待机",statusCode:"wating"},
-      {img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网',statusCode:"online"}
-      ],
+      list:[{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网',statusCode:"online"},{img:"/src/assets/youyanji1.png",text:"烤箱",id:"oven",status:"故障",statusCode:"fault"},{img:"/src/assets/zhengwei1.png",text:"蒸微一体机",id:"steamMicro",status:"运行中",statusCode:"working"},{img:"/src/assets/zaoju.png",text:"灶具",id:"cooker",status:"待机",statusCode:"wating"},{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网',statusCode:"online"}],
       listTwo:[{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网',statusCode:"online"},{img:"/src/assets/youyanji1.png",text:"烤箱",id:"oven",status:"故障"},{img:"/src/assets/zhengwei1.png",text:"蒸微一体机",id:"steamMicro",status:"运行中"},{img:"/src/assets/zaoju.png",text:"灶具",id:"cooker",status:"待机"},{img:"/src/assets/daoshiji1.png",text:"蒸箱",id:"steam",status:'联网'}],
       flag:0,
       count:0,
@@ -390,7 +385,7 @@ export default {
    width: 710px;
    display: flex;
    flex-direction: row;
-   justify-content: space-around;
+   justify-content: flex-start;
    flex-wrap: wrap
  }
  .perBoxOpen{
@@ -400,9 +395,10 @@ export default {
    margin-bottom: 20px
  }
  .perBoxClose{
-   width:226px;
+   width:225px;
    height:242px;
-   margin-bottom: 20px
+   margin-bottom: 20px;
+   margin-left: 11px
  }
  .imgOpen{
    width:120px;

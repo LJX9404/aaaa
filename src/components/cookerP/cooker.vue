@@ -8,26 +8,26 @@
 				<div class="rangBoxLeft">
 					<img src="/src/assets/zaoJuBgc.png" class="ranBgc" />
 					<img src="/src/assets/zaoJuRang.png" class="rangAnmin" />
-					<div class="rangBoxTitle">左灶：已关闭</div>
+					<div class="rangBoxTitle"><text class='rangBoxTitleText'>左灶：已关闭</text></div>
 				</div>
 				<div class="rangBoxRight">
 					<img src="/src/assets/zaoJuBgc.png" class="ranBgc">
 					<img src="/src/assets/zaoJuRang.png" class="rangAnmin" />
-					<div class="rangBoxTitle2">右灶：三档火力</div>
+					<div class="rangBoxTitle2"><text class='rangBoxTitle2Text'>右灶：三档火力</text></div>
 					<div class="OilTitle">
-						<img src="/src/assets/OilDropletRed.png" class="Oil" /> 智能烹饪中
+						<img src="/src/assets/OilDropletRed.png" class="Oil" /> <text class='OilTitleText'>智能烹饪中</text>
 					</div>
-					<div class="rangTime">1小时20分钟后</br> <span class="BrTitle">自动关机</span></div>
+					<div class="rangTime"><text class='rangTime1'>1小时20分钟后</text> <text class="BrTitle">自动关机</text></div>
 				</div>
 			</div>
 			<div class="contentBottom">
 				<div class="contentBottomLeft">
 					<img src="/src/assets/zaoju_btn_close@3x.png" class="closeImg" />
-					<div class="close">开启</div>
+					<div class="close"><text class='closeText'>开启</text></div>
 				</div>
 				<div class="contentBottomRight">
 					<img src="/src/assets/zaoju_btn_open@2x.png" class="openImg" />
-					<div class="open">关闭</div>
+					<div class="open"><text class='openText'>关闭</text></div>
 				</div>
 			</div>
 		</div>
@@ -47,20 +47,20 @@
 	<am-popup :show.sync="show" position="bottom" width="500" height='569' @click="handleClick">
 		<div  class="listsPopup"  @click="listItemClick">
 			<div class="listItem" >
-				重命名
+				<text class='listText'>重命名</text>
 			</div>
 			<div class="listItem"  @click="myDishwasher('myDishwasher')">
-				固件升级
+				<text class='listText'>固件升级</text>
 			</div>
 			<div class="listItem"  @click="echarts('echartsTime')">
-				使用时间统计
+				<text class='listText'>使用时间统计</text>
 			</div>
 			<div class="listItem colorRed"  @click="pickTIme('pickTIme')">
-				删除设备
+				<text class='listText'>删除设备</text>
 			</div>
 		</div>
 		 <div  class="Close" @click="show=false">
-		 	取消
+		 	<text class='listText'>取消</text>
 		 </div>
 	</am-popup>
 </div>
@@ -188,26 +188,27 @@
 	
 	.rangBoxTitle {
 		height: 26px;
-		font-size: 28px;
-		font-family: PingFang-SC-Medium;
-		font-weight: 500;
-		color: rgba(244, 244, 244, 1);
-		line-height: 6px;
 		position: absolute;
 		top: 131px;
 		left: 65px;
 	}
-	
-	.rangBoxTitle2 {
-		height: 26px;
+	.rangBoxTitleText{
 		font-size: 28px;
 		font-family: PingFang-SC-Medium;
 		font-weight: 500;
 		color: rgba(244, 244, 244, 1);
-		line-height: 6px;
+	}
+	.rangBoxTitle2 {
+		height: 26px;
 		position: absolute;
 		top: 131px;
 		left: 45px;
+	}
+	.rangBoxTitle2Text{
+		font-size: 28px;
+		font-family: PingFang-SC-Medium;
+		font-weight: 500;
+		color: rgba(244, 244, 244, 1);
 	}
 	
 	.OilTitle {
@@ -217,10 +218,12 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		
+	}
+	.OilTitleText{
 		font-size: 24px;
 		color: #ffffff;
 	}
-	
 	.Oil {
 		width: 35px;
 		height: 37px;
@@ -230,9 +233,11 @@
 		position: absolute;
 		top: 185px;
 		left: 64px;
+		
+	}
+	.rangTime1{
 		font-size: 24px;
 		color: rgba(154, 154, 154, 1);
-		line-height: 6px;
 	}
 	
 	.BrTitle {
@@ -240,7 +245,6 @@
 		margin-top: 10px;
 		font-size: 24px;
 		color: rgba(154, 154, 154, 1);
-		line-height: 6px;
 	}
 	
 	.contentBottom {
@@ -281,14 +285,14 @@
 		margin-top: 30px;
 	}
 	
-	.close {
+	.closeText{
 		font-size: 26px;
 		text-align: center;
 		font-weight: 500;
 		color: rgba(244, 244, 244, 1);
 	}
 	
-	.open {
+	.openText {
 		font-size: 26px;
 		text-align: center;
 		font-weight: 500;
@@ -348,13 +352,15 @@ border-bottom: 10px solid rgba(244,244,244,1);
 }
 .listItem{
 	height: 109px;
-	line-height: 109px;
-	font-size: 36px;
 	border-top: 1px solid #717171;
-	margin: 0 40px;
+	margin: 0 40px;	
+}
+.listText{
+	line-height: 109px;
 	text-align: center;
 	font-weight:500;
     color:rgba(102,102,102,1);
+    font-size: 36px;
 }
 .Close{
 	font-size: 36px;

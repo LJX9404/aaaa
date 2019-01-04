@@ -8,6 +8,7 @@ import myCooker from "@/components/chefButler/myCooker"
 import oven from "@/components/ovenP/oven"
 import steam from "@/components/steamP/steam"
 import traditionalCooking from "@/components/steamP/traditionalCooking"
+import reservePlan from "@/components/steamP/reservePlan"
 import steamMicro from "@/components/steamMicroP/steamMicro"
 import cooker from "@/components/cookerP/cooker"
 import echartsTime from "@/components/cookerP/echartsTime"
@@ -131,6 +132,11 @@ module.exports = new Router({
       path: '/traditionalCooking',
       name: 'traditionalCooking',
       component: traditionalCooking,
+    },
+    {
+      path: '/reservePlan',
+      name: 'reservePlan',
+      component: reservePlan,
     }
   ]
 })
