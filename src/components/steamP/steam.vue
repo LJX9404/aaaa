@@ -30,9 +30,16 @@
           <text  @click="link('caidan')" :class="[[selectpath=='caidan'?'nav-item-selecte':'nav-selecte-normal'],secondMenu]">蒸箱菜单</text>
           <text  @click="link('moreMenu')" :class="[[selectpath=='moreMenu'?'nav-item-selecte':'nav-selecte-normal'],moreSelect]">更多智能菜谱  ></text>
         </div>
-        <list class="lists"  v-for="(item,index) in listTwo" :key="item">
-           <cell>{{item}}</cell>
-        </list>
+      <scroller scroll-direction="horizontal" class="lists" >
+          <div class="cellStyle" v-for="(item,index) in listTwo" :key="index">
+            <div class="bottomPicBox">
+             <image :src='item.img' class="bottomPic"></image>              
+            </div>
+             <div class="textBox">
+             <text class="bottomText">{{item.text}}</text>               
+             </div>
+          </div>
+      </scroller>
      </div>              
      <div>
            <router-view></router-view>
@@ -63,7 +70,7 @@ export default {
       selectpath: "caipu",
       moreSelect: "moreStyle",
       secondMenu: "secondStyle",
-      listTwo: [1, 2, 3],
+      listTwo : [{img:'/src/assets/many.png',text:'清蒸鳜鱼'}, {img:'/src/assets/many.png',text:'清蒸鳜鱼'}, {img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'}],
       count: 0,
       isnormal: true,
       normalPic: "mainpic",
@@ -77,11 +84,10 @@ export default {
       this._data.selectpath = e;
       switch (e) {
         case "caipu":
-          console.error("xxxxx");
-          this.listTwo = [1, 2, 3];
+          this.listTwo = [{img:'/src/assets/many.png',text:'清蒸鳜鱼'}, {img:'/src/assets/many.png',text:'清蒸鳜鱼'}, {img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'}];
           break;
         case "caidan":
-          this.listTwo = [4, 5, 6];
+          this.listTwo = [{img:'/src/assets/first.jpg',text:'清蒸鳜鱼'}, {img:'/src/assets/first.jpg',text:'清蒸鳜鱼'}, {img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'},{img:'/src/assets/many.png',text:'清蒸鳜鱼'}];
           break;
         case "moreMenu":
           this.$router.push(e);
@@ -261,6 +267,7 @@ export default {
   width: 750px;
   height: 523px;
   padding-left: 40px;
+  /* background-color:whitesmoke; */
 }
 
 .nav {
@@ -299,9 +306,41 @@ export default {
   margin-left: 54px;
 }
 .lists {
-  width: 750px;
-  height: 100px;
+  width: 1800px;
+  height: 260px;
+  margin-top: 44px;
+  margin-left: -40px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.cellStyle{
+  width: 306px;
+  height: 260px;
+}
+.textBox{
+  width: 306px;
+  height: 60px;
+  text-align: center;
+  align-items:center;
+}
+.bottomPicBox{
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  margin-left: 28px;  
+}
+.bottomPic{
+  width: 306px;
+  height: 200px;
+}
+.bottomText{
+  font-size:28px;
+  line-height: 28px;
+  font-family:PingFang-SC-Bold;
+  font-weight:bold;
+  color:rgba(31,31,31,1);
+  margin-top: 24px
 }
 </style>

@@ -1,14 +1,17 @@
 <template>
 	<scroller>
 		<div class="content">
-			<div class="text" @click="show=true">洗碗机</div>	
+			<div class="text" @click="show=true" >洗碗机</div>	
 			<div>
 				<am-popup :show.sync="show" position="bottom" width="500" height="912">
 					<div class="popup">
-						<text class='title'>清洗详情</text>
+						<text class='title' >清洗详情</text>
 						<img src="/src/assets/cancel.png" class="close" @click="show=false" />
 					</div>
-					<div class="popupContent">
+					<div class="popupContent marginTop">
+						<div class="garden"><text class='gardenText'>1</text></div>
+						<div class='gardenSolid'>
+						</div>
 						<div class="popupContentRight">
 							<text class='flowTitle'>第一遍清洗</text>
 							<div class="flow">
@@ -17,20 +20,96 @@
 									<text class='IMGname'>加熱</text>
 								</div>
 								<div class="heating">
-									<img src="/src/assets/heating.png" class="heatingImg" />
-									<text class='IMGname'>加熱</text>
+									<img src="/src/assets/clock.png" class="clockImg" />
+									<text class='IMGname'>20分钟</text>
 								</div>
 								<div class="heating">
-									<img src="/src/assets/heating.png" class="heatingImg" />
-									<text class='IMGname'>加熱</text>
+									<img src="/src/assets/Thermometer.png" class="ThermometerImg" />
+									<text class='IMGname'>55C</text>
 								</div>
 								<div class="heating">
-									<img src="/src/assets/heating.png" class="heatingImg" />
-									<text class='IMGname'>加熱</text>
+									<img src="/src/assets/WaterQuantity.png" class="WaterQuantityImg" />
+									<text class='LastIMGname'>12L</text>
 								</div>
 							</div>
 						</div>
-
+					</div>
+					<div class="popupContent">
+						<div class="garden"><text class='gardenText'>2</text></div>
+						<div class='gardenSolid'>
+						</div>
+						<div class="popupContentRight">
+							<text class='flowTitle'>第二遍清洗</text>
+								<div class="flow">
+								<div class="heating">
+									<img src="/src/assets/heating.png" class="heatingImg" />
+									<text class='IMGname'>加熱</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/clock.png" class="clockImg" />
+									<text class='IMGname'>20分钟</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/Thermometer.png" class="ThermometerImg" />
+									<text class='IMGname'>55C</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/WaterQuantity.png" class="WaterQuantityImg" />
+									<text class='LastIMGname'>12L</text>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popupContent">
+						<div class="garden"><text class='gardenText'>3</text></div>
+						<div class='gardenSolid'>
+						</div>
+						<div class="popupContentRight">
+							<text class='flowTitle'>第三遍清洗</text>
+								<div class="flow">
+								<div class="heating">
+									<img src="/src/assets/heating.png" class="heatingImg" />
+									<text class='IMGname'>加熱</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/clock.png" class="clockImg" />
+									<text class='IMGname'>20分钟</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/Thermometer.png" class="ThermometerImg" />
+									<text class='IMGname'>55C</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/WaterQuantity.png" class="WaterQuantityImg" />
+									<text class='LastIMGname'>12L</text>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popupContent">
+						<div class="garden"><text class='gardenText'>4</text></div>
+						
+						<div class="popupContentRight">
+							<text class='flowTitle'>第四遍清洗</text>
+								<div class="flow">
+								<div class="heating">
+									<img src="/src/assets/heating.png" class="heatingImg" />
+									<text class='IMGname'>加熱</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/clock.png" class="clockImg" />
+									<text class='IMGname'>20分钟</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/Thermometer.png" class="ThermometerImg" />
+									<text class='IMGname'>55C</text>
+								</div>
+								<div class="heating">
+									<img src="/src/assets/WaterQuantity.png" class="WaterQuantityImg" />
+									<text class='LastIMGname'>12L</text>
+								</div>
+							</div>
+						</div>
 					</div>
 
 				</am-popup>
@@ -45,6 +124,8 @@
 </template>
 <script>
 	import { WxcMinibar, AmNavBar, AmPopup, AmButton, } from 'weex-amui'
+	const storage = weex.requireModule('storage');
+    const modal = weex.requireModule('modal');
 	export default {
 		components: {
 			WxcMinibar,
@@ -57,12 +138,14 @@
 			return {
 				show: false
 			}
-		}
+		},
+		
 	}
 </script>
 <style scoped>
 	.text {
-		font-size: 100px
+		font-size: 50px;
+		text-align: center;
 	}
 	
 	.title {
@@ -105,11 +188,40 @@
 	
 	.popupContent {
 		width: 653px;
-		/*margin-left: 137px;*/
+		margin-left: 137px;
 		margin-right: 96px;
 		position: relative;
+		margin-bottom: 62px;
+		
 	}
-	
+	.garden{
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		background-color: #494949;
+		border-top-left-radius: 25px;
+		border-top-right-radius: 25px;
+		border-bottom-left-radius: 25px;
+		border-bottom-right-radius: 25px;
+		position: absolute;
+		top: 0;
+		left: -81px;
+	}
+	.gardenText{
+			line-height: 50px;
+		color: #ffffff;
+		font-size: 30px;
+		text-align: center;
+	}
+	.gardenSolid{
+		width: 2px;
+		height: 135px;
+		position: absolute;
+		top: 50px;
+		left: -60px;
+		background-color: #FFD9DFF9;
+	}
 	.popupContentRight {
 		width: 516px;
 		float: right;
@@ -126,6 +238,20 @@
 		height: 37px;
 		margin-left: 10px;
 	}
+	.clockImg{
+		width: 36px;
+		height: 37px;
+		margin-left: 10px;
+	}
+	.ThermometerImg{
+		width: 17px;
+		height: 37px;
+		margin-left: 10px;
+	}
+	.WaterQuantityImg{
+		width: 46px;
+		height: 37px;
+	}
 	
 	.IMGname {
 		font-size: 30px;
@@ -133,35 +259,12 @@
 		color: rgba(102, 102, 102, 1);
 		margin-left: 13px;
 	}
-	
-	.flowTitle:before {
-		content: "111111";
-		/*background:'goldenrod';*/
-		background-color: yellow;
-		color: cornflowerblue;
-		font-weight: bold;
-		width: 50px;
-		height: 50px;
-		line-height: 50px;
-		text-align: center;
-		border-top-left-radius: 15px;
-		border-top-right-radius: 15px;
-		border-bottom-left-radius: 15px;
-		border-bottom-right-radius: 15px;
-		position: absolute;
-		top: 0px;
-		left: 0px;
+	.LastIMGname{
+		font-size: 30px;
+		font-weight: 500;
+		color: rgba(102, 102, 102, 1);
 	}
-	
-	.flowTitle:after {
-		content: "";
-		background-color: #FFD9DFF9;
-		color: red;
-		font-weight: bold;
-		width: 3px;
-		height: 185px;
-		position: absolute;
-		top: 40px;
-		left: -25px;
+	.marginTop{
+		margin-top: 82px;
 	}
 </style>

@@ -1,15 +1,14 @@
 <template>
    <scroller>
-       <!-- <wxc-minibar title="传统烹饪" background-color="#ffffff" text-color="#000000" font-size="36px" font-family='PingFang-SC-Bold' font-weight='bold' color='rgba(31,31,31,1)'></wxc-minibar> -->
        <am-nav-bar title="传统烹饪"  :right-btn="[ 'ellipsis']"  ></am-nav-bar>
        <div class="navBox">
            <image src="/src/assets/steambg.png" class="bgimg"></image>
            <text class="navTitle">烹饪模式</text>
-          <div class="circleBox" :style="{ left: movePosition + 'px' }">
-            <div class="circleContainer"  v-for="(item,index) in list" :key="index" @swipe="onSwipe($event,item)" @touchstart="ontouchstart" @touchmove="ontouchmove" @touchend="ontouchend">
-              <text class="circleInfo">{{item}}</text>
+          <scroller class="circleBox" scroll-direction='horizontal'>
+             <div :class="[isChecked ? checkedView :normalView]" v-for="(item,index) in list"  :ref=item :key="index" @click="changeView(item)">
+              <text :class="[isChecked ? checkedText :normalText]">{{item}}</text>
               </div>
-          </div>
+          </scroller>
        </div>
        <div class="timePickBox">
            <text class="setinfo">烹饪设置</text>
@@ -28,7 +27,7 @@
                <text class="close">{{message}}  ></text>
            </div>
            <div class="startBtn">
-               <text class="startCook" @click="startCooking">开始烹饪</text>
+               <text class="startCook" @click="startCooking">{{btnInfo}}</text>
            </div>
        </div>   
        <div>
@@ -599,7 +598,7 @@ const times = [
     }
   ]
 ];
-var movePosition,startPosition,endPosition;
+var movePosition, startPosition, endPosition;
 export default {
   components: { WxcMinibar, AmPickerView, AmNavBar },
   name: "traditionalCooking",
@@ -609,9 +608,15 @@ export default {
       value: null,
       message: "关闭",
       list: ["普通蒸", "过温", "解冻", "除垢", "发酵"],
-      movePosition:0,
-      startPosition:0,
-      endPosition:0
+      isChecked: false,
+      checkedView: "checkedContainer",
+      normalView: "normalContainer",
+      checkedText: "textChecked",
+      normalText: "textNormal",
+      btnInfo: "开始烹饪",
+      movePosition: 0,
+      startPosition: 0,
+      endPosition: 0
     };
   },
   methods: {
@@ -629,14 +634,9 @@ export default {
       });
       this.$router.go(-1);
     },
-    onSwipe: function(event) {
-      if (event.direction == "left") {
-        event.changedTouches.pageX += 154;
-      }
-    },
     ontouchstart: function(e) {
-      console.log(JSON.stringify(e.changedTouches[0].pageX ));
-      this.startPosition=JSON.stringify(e.changedTouches[0].pageX);
+      console.log(JSON.stringify(e.changedTouches[0].pageX));
+      this.startPosition = JSON.stringify(e.changedTouches[0].pageX);
       if (e.changedTouches[0].pageX) {
         this.pagexValue = e.changedTouches[0].pageX;
       }
@@ -647,21 +647,49 @@ export default {
       }
     },
     ontouchend: function(e) {
-      console.log(JSON.stringify(e.changedTouches[0].pageX ));
-      this.endPosition=JSON.stringify(e.changedTouches[0].pageX);
-      var count=this.endPosition-this.startPosition;
-      if(count>0){
-        this.movePosition=0
-      }else if(count<-177){
-        this.movePosition=-177
-      }else{
-        this.movePosition=count
+      console.log(JSON.stringify(e.changedTouches[0].pageX));
+      this.endPosition = JSON.stringify(e.changedTouches[0].pageX);
+      var count = this.endPosition - this.startPosition;
+      if (count > 0) {
+        this.movePosition = 0;
+      } else if (count < -177) {
+        this.movePosition = -177;
+      } else {
+        this.movePosition = count;
+      }
+    },
+    changeView: function(e) {
+      // console.log(this.$refs, this.$refs[e]);
+      this.$refs[e][0].classList.toggle("checkedContainer");
+      this.$refs[e][0].classList.toggle("normalContainer");
+      switch (e) {
+        case "普通蒸":
+          this.btnInfo = "开始烹饪";
+          break;
+        case "过温蒸":
+          this.btnInfo = "开始烹饪";
+          break;
+        case "除垢":
+          this.btnInfo = "开始除垢";
+          break;
+        case "解冻":
+          this.btnInfo = "开始解冻";
+          break;
+        case "发酵":
+          this.btnInfo = "开始发酵";
+          break;
       }
     }
   }
 };
 </script>
 <style scoped>
+.active {
+  border-top-color: rgba(200, 175, 112, 1);
+  border-left-color: rgba(200, 175, 112, 1);
+  border-bottom-color: rgba(200, 175, 112, 1);
+  border-right-color: rgba(200, 175, 112, 1);
+}
 .am-nav-bar[data-v-cb89152e] {
   background-color: #000 !important;
 }
@@ -700,7 +728,36 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.circleContainer {
+.checkedContainer {
+  width: 134px;
+  height: 134px;
+  border-top-left-radius: 67px;
+  border-top-right-radius: 67px;
+  border-bottom-left-radius: 67px;
+  border-bottom-right-radius: 67px;
+  border-top-color: rgba(200, 175, 112, 1);
+  border-left-color: rgba(200, 175, 112, 1);
+  border-bottom-color: rgba(200, 175, 112, 1);
+  border-right-color: rgba(200, 175, 112, 1);
+  border-top-style: solid;
+  border-left-style: solid;
+  border-bottom-style: solid;
+  border-right-style: solid;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  font-size: 28px;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(200, 175, 112, 1);
+  line-height: 28px;
+  text-align: center;
+  align-items: center;
+  padding-top: 54px;
+  margin-left: 43px;
+}
+.normalContainer {
   width: 134px;
   height: 134px;
   border-top-left-radius: 67px;
@@ -722,18 +779,25 @@ export default {
   font-size: 28px;
   font-family: PingFang-SC-Bold;
   font-weight: bold;
-  color: rgba(200, 175, 112, 1);
+  color: rgba(154, 154, 154, 1);
   line-height: 28px;
   text-align: center;
   align-items: center;
   padding-top: 54px;
   margin-left: 43px;
 }
-.circleInfo {
+.textChecked {
   font-size: 28px;
   font-family: PingFang-SC-Bold;
   font-weight: bold;
   color: rgba(200, 175, 112, 1);
+  line-height: 28px;
+}
+.textNormal {
+  font-size: 28px;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(154, 154, 154, 1);
   line-height: 28px;
 }
 .timePickBox {
