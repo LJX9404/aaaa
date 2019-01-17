@@ -4,7 +4,7 @@
        <text class="text">this is pickTIme</text>
  <div>
     <slider class="slider" interval="4500" @change="onchange">
-      <div class="frame" v-for="img in imageList">
+      <div class="frame" v-for="(img,index) in imageList" :key="index">
         <image class="image" resize="cover" :src="img.src"></image>
         <text class="title">{{img.title}}</text>
       </div>

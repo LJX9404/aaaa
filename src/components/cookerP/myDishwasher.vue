@@ -1,7 +1,8 @@
 <template>
 	<scroller>
+		 <wxc-minibar title="洗碗机弹窗" background-color="#000000" text-color="#FFFFFF"></wxc-minibar>
 		<div class="content">
-			<div class="text" @click="show=true" >洗碗机</div>	
+			<div @click="show=true" ><text class="text">洗碗机</text></div>	
 			<div>
 				<am-popup :show.sync="show" position="bottom" width="500" height="912">
 					<div class="popup">
@@ -123,7 +124,8 @@
 	</scroller>
 </template>
 <script>
-	import { WxcMinibar, AmNavBar, AmPopup, AmButton, } from 'weex-amui'
+	import {  AmNavBar, AmPopup, AmButton, } from 'weex-amui';
+	import { WxcMinibar } from "weex-ui";
 	const storage = weex.requireModule('storage');
     const modal = weex.requireModule('modal');
 	export default {

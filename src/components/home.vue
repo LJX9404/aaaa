@@ -6,16 +6,16 @@
        <am-icon class="angle"  type="down"  size="md" />
        <text class="chitench">我的厨房</text>
        <image class="shop" src="/src/assets/shop.png"></image>
-       <!-- <image class="ring" src="/src/assets/lighton.png"></image> -->
-       <am-icon type="ellipsis"  class="ring" ></am-icon>
+       <image class="ring" src="/src/assets/lingdang.png"></image>
+      
      </div>
 
 
     <div class="adddev">
       <div class="addpicbox">
-         <image class="addpic" src="/src/assets/add.png"></image>
+         <image class="addpic" src="/src/assets/add.png" @click="link('adddev')"></image>
       </div>
-      <text class="addtext">点击添加设备</text>
+      <text class="addtext" >点击添加设备</text>
     </div>
 
 
@@ -40,7 +40,7 @@
 <script>
 import { AmIcon } from 'weex-amui'
 const modal = weex.requireModule('modal');
-const dom = weex.requireModule('dom')
+const dom = weex.requireModule('dom');
 export default {
    components: { 
      AmIcon
@@ -120,10 +120,11 @@ left:303px
   left: 598px
 }
 .ring{
+  width: 40px;
+  height: 40px;
   position:absolute;  
   right: 40px;
   bottom: 24px;
-  font-size: 17px
 }
 
 .adddev{

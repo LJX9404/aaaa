@@ -1,6 +1,11 @@
 <template>
-   <div>
-      <wxc-minibar title="虚拟体验" background-color="#fff" text-color="#000" style="height:100px"></wxc-minibar>    
+   <scroller>
+        <div class="navigatorBox" >
+          <div  @click='toBack'>
+             <am-icon type="left" size="md" class="gobackStyle" ></am-icon>
+          </div>
+          <text class="navigatorTitle">虚拟体验馆</text>
+       </div>
         <div class="container">
             <div class="boxone">
         <div class="boxCommon boxwifi">
@@ -42,92 +47,110 @@
               <image src="/src/assets/1.png"  class="bottompic"></image>
                 <text class="bottomtext">搜索设备</text>
           </div>
-            </div>
-              
-         
+            </div>    
         </div>
-        
-
-
-
-   </div>
+   </scroller>
 </template>
 <script>
-import { WxcMinibar } from 'weex-ui';
+import { AmIcon } from "weex-amui";
+const dom = weex.requireModule("dom");
+let navigator = weex.requireModule("navigator");
 export default {
-  components:{WxcMinibar},
-    name:'myCooker',
-    data(){
-        return{
-
-        }
-    },
-    methods:{
-           back:function(){
-                  this.$router.go(-1)
-         }, 
+  components: { AmIcon },
+  name: "myCooker",
+  data() {
+    return {};
+  },
+  methods: {
+    toBack: function() {
+      console.log("999999");
+      navigator.pop({
+        animated: "true"
+      });
     }
-}
+  }
+};
 </script>
 <style scoped>
-.container{
+.navigatorBox {
   width: 750px;
-  background-color: #F4F4F4;
+  height: 95px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.gobackStyle {
+  margin-left: 34px;
+  margin-top: 35px;
+  color: #000;
+}
+.navigatorTitle {
+  font-size: 36px;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: #000;
+  line-height: 36px;
+  margin-top: 35px;
+  margin-left: 214px;
+}
+.container {
+  width: 750px;
+  background-color: #f4f4f4;
   padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
 }
-.boxCommon{
+.boxCommon {
   display: -ms-flex;
   display: -webkit-flex;
   display: flex;
   flex-direction: row;
   text-align: center;
 }
-.boxone{
+.boxone {
   width: 710px;
   height: 565px;
   background-color: #ffffff;
 }
-.mangerbox{
-height: 121px;
-width: 650px;
-margin-left: 30px;
-margin-right: 30px;
-border-bottom-color: #CED7DB;
-border-bottom-style: solid;
-border-bottom-width: 1px;
-display: flex;
-justify-content: space-between;
-flex-direction: row
+.mangerbox {
+  height: 121px;
+  width: 650px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-bottom-color: #ced7db;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
-.mangerinfo{
-font-size:32px;
-font-family:PingFang-SC-Medium;
-font-weight:500;
-color:rgba(88,88,88,1);
-margin-top: 45px
+.mangerinfo {
+  font-size: 32px;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(88, 88, 88, 1);
+  margin-top: 45px;
 }
-.deviceinfo{
-font-size:27px;
-font-family:PingFang-SC-Medium;
-font-weight:500;
-color:rgba(154,154,154,1);
-margin-top: 48px;
-
-}
-.enviromentinfo{
-font-size:31px;
-font-family:PingFang-SC-Bold;
-font-weight:bold;
-color:rgba(102,102,102,1);
-}
-
-.boxwifi{
+.deviceinfo {
+  font-size: 27px;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(154, 154, 154, 1);
   margin-top: 48px;
-  margin-left: 34px
 }
-.environment{
+.enviromentinfo {
+  font-size: 31px;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(102, 102, 102, 1);
+}
+
+.boxwifi {
+  margin-top: 48px;
+  margin-left: 34px;
+}
+.environment {
   margin-top: 40px;
   width: 210px;
   height: 280px;
@@ -135,121 +158,120 @@ color:rgba(102,102,102,1);
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  background-color:rgba(249,249,249,1);
+  background-color: rgba(249, 249, 249, 1);
   text-align: center;
   margin-left: 20px;
-  align-items: center
+  align-items: center;
 }
 
-
-.title{
-font-size:23px;
-line-height: 23px;
-font-family:PingFang-SC-Medium;
-font-weight:500;
-color:rgba(102,102,102,1);
-margin-top: 24px
+.title {
+  font-size: 23px;
+  line-height: 23px;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 24px;
 }
-.wuxielouimg{
+.wuxielouimg {
   width: 59px;
   height: 69px;
-  margin-top: 43px
+  margin-top: 43px;
 }
-.xieloutext{
-font-size:31px;
-line-height: 31px;
-font-family:PingFang-SC-Bold;
-font-weight:bold;
-color:rgba(73,73,73,1);
-margin-top: 49px
+.xieloutext {
+  font-size: 31px;
+  line-height: 31px;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(73, 73, 73, 1);
+  margin-top: 49px;
 }
 
-.comfortLevel{
-font-size:60px;
-line-height: 60px;
-font-family:PingFang-SC-Bold;
-font-weight:bold;
-color:rgba(102,102,102,1);
-margin-top: 51px
+.comfortLevel {
+  font-size: 60px;
+  line-height: 60px;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 51px;
 }
-.goodinfo{
-margin-top: 51px;
-font-size:70px;
-line-height: 70px;
-font-family:PingFang-SC-Bold;
-font-weight:bold;
-color:rgba(200,175,112,1);
+.goodinfo {
+  margin-top: 51px;
+  font-size: 70px;
+  line-height: 70px;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: rgba(200, 175, 112, 1);
 }
-.mypro{
-width:174px;
-height:6px;
-background-color:rgba(232,238,245,1);
-border-radius:3px;
-margin-top: 46px
+.mypro {
+  width: 174px;
+  height: 6px;
+  background-color: rgba(232, 238, 245, 1);
+  border-radius: 3px;
+  margin-top: 46px;
 }
-.protext{
+.protext {
   width: 174px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 23px
+  margin-top: 23px;
 }
-.justSo{
+.justSo {
   margin-top: 55px;
 }
-.proinfo{
-font-size:23px;
-line-height: 23px;
-font-family:PingFangSC-Semibold;
-font-weight:600;
-color:rgba(102,102,102,1);
+.proinfo {
+  font-size: 23px;
+  line-height: 23px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(102, 102, 102, 1);
 }
-.networkbox{
+.networkbox {
   width: 750px;
   text-align: center;
-  align-items: center
+  align-items: center;
 }
-.networkinfo{
-font-size: 23px;
-font-family:PingFangSC-Semibold;
-font-weight:600;
-color:rgba(102,102,102,1);
-margin-top: 24px
+.networkinfo {
+  font-size: 23px;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(102, 102, 102, 1);
+  margin-top: 24px;
 }
-.bottominfo{
-    border-top-width: 1px;
-    border-top-color: #aba7a7;
-    border-top-style: solid;
-    border-left-width: 1px;
-    border-left-color: #aba7a7;
-    border-left-style: solid;
-    border-right-width: 1px;
-    border-right-color: #aba7a7;
-    border-right-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #aba7a7;
-    border-bottom-style: solid;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin-top: 20px;
-    margin-left: 60px;
-    margin-bottom: 20px;
-    width: 600px;
-    height: 80px;
-    display: flex;
-    justify-content:center;
-    flex-direction: row;
+.bottominfo {
+  border-top-width: 1px;
+  border-top-color: #aba7a7;
+  border-top-style: solid;
+  border-left-width: 1px;
+  border-left-color: #aba7a7;
+  border-left-style: solid;
+  border-right-width: 1px;
+  border-right-color: #aba7a7;
+  border-right-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #aba7a7;
+  border-bottom-style: solid;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: 20px;
+  margin-left: 60px;
+  margin-bottom: 20px;
+  width: 600px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
-.bottompic{
-    width: 50px;
-    height: 50px;
-    margin-top: 15px
+.bottompic {
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
 }
-.bottomtext{
-    font-size: 20px;
-    margin-top: 30px
+.bottomtext {
+  font-size: 20px;
+  margin-top: 30px;
 }
 </style>
 

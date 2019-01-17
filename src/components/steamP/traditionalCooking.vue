@@ -1,47 +1,75 @@
 <template>
-   <scroller>
-       <am-nav-bar title="传统烹饪"  :right-btn="[ 'ellipsis']"  ></am-nav-bar>
-       <div class="navBox">
-           <image src="/src/assets/steambg.png" class="bgimg"></image>
-           <text class="navTitle">烹饪模式</text>
-          <scroller class="circleBox" scroll-direction='horizontal'>
-             <div :class="[isChecked ? checkedView :normalView]" v-for="(item,index) in list"  :ref=item :key="index" @click="changeView(item)">
-              <text :class="[isChecked ? checkedText :normalText]">{{item}}</text>
-              </div>
-          </scroller>
-       </div>
-       <div class="timePickBox">
-           <text class="setinfo">烹饪设置</text>
-           <div class="cookset">
-               <text class="cook cooktem">烹饪温度</text>
-               <text class="cook cooktime">烹饪时长</text>
-           </div>
-           <div class="pickerBox">
-                 <am-picker-view  :data="times"  v-model="value"   class="mypicker" @change="getValue"></am-picker-view>
-                 <text class="degree commonFont">℃</text>
-                 <text class="hour commonFont">时</text>
-                 <text class="minute commonFont">分钟</text>
-           </div>
-           <div class="reserveBox"  @click="link('reservePlan')">
-               <text class="reserveTime">预约计划</text>
-               <text class="close">{{message}}  ></text>
-           </div>
-           <div class="startBtn">
-               <text class="startCook" @click="startCooking">{{btnInfo}}</text>
-           </div>
-       </div>   
-       <div>
-           <router-view></router-view>
-       </div>
-   </scroller>
+  <scroller>
+      <div class="navigatorBox" >
+    <div  @click='toBack'>
+        <am-icon type="left" size="md" class="gobackStyle" ></am-icon>
+    </div>
+    <text class="navigatorTitle">传统烹饪</text>
+  </div>
+    <div class="navBox">
+      <image
+        src="/src/assets/steambg.png"
+        class="bgimg"
+      ></image>
+      <text class="navTitle">烹饪模式</text>
+      <scroller
+        class="circleBox"
+        scroll-direction='horizontal'
+      >
+        <div
+          v-for="(item,index) in list"
+          :class="[isChecked==index ? checkedView :normalView]"
+          :key="item"
+          @click="changeView(item)"
+        >
+          <text :class="[isChecked==index ? checkedText :normalText]">{{item}}</text>
+        </div>
+      </scroller>
+    </div>
+    <div class="timePickBox">
+      <text class="setinfo">烹饪设置</text>
+      <div class="cookset">
+        <text class="cook cooktem">烹饪温度</text>
+        <text class="cook cooktime">烹饪时长</text>
+      </div>
+      <div class="pickerBox">
+        <am-picker-view
+          :data="times"
+          v-model="value"
+          class="mypicker"
+          @change="setValue"
+        ></am-picker-view>
+        <text class="degree commonFont">℃</text>
+        <text class="hour commonFont">时</text>
+        <text class="minute commonFont">分钟</text>
+      </div>
+      <div
+        :class="[isTrue ?checkedBox : normalBox]"
+        @click="link('reservePlan')"
+      >
+        <text class="reserveTime">{{info}}</text>
+        <text class="close">{{message}} ></text>
+      </div>
+      <div class="startBtn">
+        <text
+          class="startCook"
+          @click="startCooking"
+        >{{btnInfo}}</text>
+      </div>
+    </div>
+    <div>
+      <router-view></router-view>
+    </div>
+  </scroller>
 </template>
 <script>
-import { WxcMinibar } from "weex-ui";
-import { AmNavBar } from "weex-amui";
+let navigator = weex.requireModule("navigator");
+import { AmNavBar ,AmIcon} from "weex-amui";
 import { AmPickerView } from "weex-amui";
-import { log } from "util";
+import { log, debug } from "util";
 const storage = weex.requireModule("storage");
 const modal = weex.requireModule("modal");
+const domModule = weex.requireModule("dom");
 const times = [
   [
     {
@@ -357,10 +385,6 @@ const times = [
   ],
   [
     {
-      label: "0",
-      value: "0"
-    },
-    {
       label: "1",
       value: "1"
     },
@@ -598,41 +622,103 @@ const times = [
     }
   ]
 ];
+const timesTwo = [
+  [
+    {
+      label: "100",
+      value: "100"
+    }
+  ],
+  [
+    {
+      label: "1",
+      value: "1"
+    }
+  ],
+  [
+    {
+      label: "11",
+      value: "11"
+    }
+  ]
+];
 var movePosition, startPosition, endPosition;
 export default {
-  components: { WxcMinibar, AmPickerView, AmNavBar },
+  components: { AmPickerView, AmNavBar ,AmIcon},
   name: "traditionalCooking",
   data() {
     return {
       times,
+      timesTwo,
       value: null,
       message: "关闭",
+      info: "预约计划",
       list: ["普通蒸", "过温", "解冻", "除垢", "发酵"],
-      isChecked: false,
+      isChecked: 0,
+      isTrue: "true",
       checkedView: "checkedContainer",
       normalView: "normalContainer",
       checkedText: "textChecked",
       normalText: "textNormal",
+      checkedBox: "reserveBox",
+      normalBox: "hiddenBox",
+      checkedTime: "reserveTime",
+      normalTime: "hiddenTime",
       btnInfo: "开始烹饪",
       movePosition: 0,
       startPosition: 0,
-      endPosition: 0
+      endPosition: 0,
+      cookTime: {
+        degreeCelsius: "100°C",
+        hour: 0,
+        minute: 1,
+        order: "烹饪中",
+        pattern: "普通蒸",
+        status: "working",
+        descalingImg:false,
+        planDay: null,
+        planTime: null
+      }
     };
+  },
+  mounted() {
+   
   },
   methods: {
     link: function(e) {
+       storage.setItem('cookTime', JSON.stringify(this.cookTime), event => {
+      })
       this.$router.push(e);
+    }, 
+     toBack: function() {
+           this.$router.go(-1);
     },
-    getValue: function(item) {
-      storage.setItem("cookTime", JSON.stringify(item), event => {
-        console.log(JSON.stringify(item), event);
-      });
+    setValue: function(item) {
+      this.cookTime.degreeCelsius = item[0]["value"] + "°C";
+      this.cookTime.hour = item[1]["value"];
+      this.cookTime.minute = item[2]["value"];
     },
     startCooking: function() {
       storage.getItem("cookTime", event => {
-        console.log("get value:", event);
+        if (event.result == "success") {
+          let temp = JSON.parse(event.data);
+           console.log( event);
+          if (temp.status=='plan') {
+            this.cookTime.planDay = temp.planDay;
+            this.cookTime.planTime = temp.planTime;
+            this.cookTime.order = "预约中";
+            this.cookTime.status="plan";
+          }
+        }
+        console.log(this.cookTime, event,"-=-=-=-=-=-=-");
+        storage.setItem("cookTime", JSON.stringify(this.cookTime), event => {  
+          console.log(this.cookTime, 'ppppppppp');
+          this.$router.go(-1);
+          });
+      
       });
-      this.$router.go(-1);
+      
+      
     },
     ontouchstart: function(e) {
       console.log(JSON.stringify(e.changedTouches[0].pageX));
@@ -659,24 +745,39 @@ export default {
       }
     },
     changeView: function(e) {
-      // console.log(this.$refs, this.$refs[e]);
-      this.$refs[e][0].classList.toggle("checkedContainer");
-      this.$refs[e][0].classList.toggle("normalContainer");
+      this.isChecked = this.list.indexOf(e);
+      this.cookTime.pattern = e;
+      if (this.isChecked == 3) {
+        this.isTrue = false;
+        this.times = timesTwo;
+      } else {
+        this.isTrue = true;
+        this.times = times;
+      }
+      this.cookTime.degreeCelsius = this.times[0][0]["value"] + "°C";
+      this.cookTime.hour = this.times[1][0]["value"];
+      this.cookTime.minute = this.times[2][0]["value"];
       switch (e) {
         case "普通蒸":
           this.btnInfo = "开始烹饪";
+
           break;
         case "过温蒸":
           this.btnInfo = "开始烹饪";
           break;
         case "除垢":
           this.btnInfo = "开始除垢";
+          this.cookTime.order = "除垢中";
+          this.cookTime.descalingImg=true;
           break;
         case "解冻":
           this.btnInfo = "开始解冻";
+          this.cookTime.order = "解冻中";
           break;
         case "发酵":
           this.btnInfo = "开始发酵";
+          this.cookTime.order = "发酵中";
+          this.cookTime.descalingImg=true;
           break;
       }
     }
@@ -684,6 +785,28 @@ export default {
 };
 </script>
 <style scoped>
+.navigatorBox {
+  width: 750px;
+  height: 95px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.gobackStyle {
+  margin-left: 34px;
+  margin-top: 35px;
+  color: #000;
+}
+.navigatorTitle {
+  font-size: 36px;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: #000;
+  line-height: 36px;
+  margin-top: 35px;
+  margin-left: 214px;
+}
 .active {
   border-top-color: rgba(200, 175, 112, 1);
   border-left-color: rgba(200, 175, 112, 1);
@@ -802,12 +925,16 @@ export default {
 }
 .timePickBox {
   width: 750px;
-  height: 786px;
+  height: 830px;
 }
 .pickerBox {
   position: relative;
   width: 750px;
   height: 376px;
+}
+.pickerHidden {
+  width: 0px;
+  height: 0px;
 }
 .commonFont {
   font-size: 40px;
@@ -861,6 +988,7 @@ export default {
   width: 750px;
   height: 105px;
   padding-top: 37px;
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
   border-bottom-style: solid;
@@ -869,6 +997,12 @@ export default {
   border-top-style: solid;
   border-top-color: rgba(230, 235, 237, 1);
   border-top-width: 1px;
+  opacity: 1;
+}
+.hiddenBox {
+  width: 0px;
+  height: 0px;
+  opacity: 0;
 }
 .reserveTime {
   font-size: 32px;
@@ -878,6 +1012,10 @@ export default {
   color: rgba(31, 31, 31, 1);
   margin-left: 45px;
 }
+.hiddenTime {
+  font-size: 0px;
+  opacity: 0;
+}
 .close {
   font-size: 30px;
   font-family: PingFang-SC-Medium;
@@ -885,6 +1023,10 @@ export default {
   color: rgba(35, 38, 39, 1);
   line-height: 30px;
   margin-left: 455px;
+}
+.hiddenClose {
+  font-size: 0px;
+  opacity: 0px;
 }
 .startBtn {
   width: 670px;
@@ -905,5 +1047,6 @@ export default {
   line-height: 36px;
   margin-left: 265px;
   margin-top: 31px;
+  margin-bottom: 20px;
 }
 </style>
