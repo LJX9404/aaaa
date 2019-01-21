@@ -238,7 +238,10 @@ export default {
   background-color: #fff;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap
+  flex-wrap: nowrap;
+   position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .gobackStyle{
   margin-left: 34px;
@@ -259,6 +262,7 @@ margin-left: 214px
   padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
+  margin-top: 98px
 }
 .boxCommon {
   display: -ms-flex;

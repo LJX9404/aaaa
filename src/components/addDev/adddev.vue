@@ -62,6 +62,9 @@ export default {
   border-bottom-color: rgba(206,215,219,1);
   border-bottom-style: solid;
   border-bottom-width: 1px;
+  position:fixed;
+  top:0px;
+  overflow: hidden;
 }
 .cancle {
   width: 44px;
@@ -82,6 +85,7 @@ export default {
   width: 750px;
   /* height: 1205px; */
   background-color: rgba(252, 247, 247, 1);
+  margin-top: 95px;
 }
 .mangerbox {
   width: 750px;

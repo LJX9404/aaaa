@@ -69,6 +69,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .navigatorTitle {
   font-size: 36px;
@@ -89,6 +92,7 @@ export default {
   width: 750px;
   height: 1797px;
   background-color: rgba(244, 244, 244, 1);
+  margin-top: 95px
 }
 .bingSuccessBox {
   width: 2140px;
@@ -99,8 +103,8 @@ export default {
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.bingFailBox{
-width: 2140px;
+.bingFailBox {
+  width: 2140px;
   height: 400px;
   margin-top: 74px;
   margin-left: 20px;
@@ -198,59 +202,58 @@ width: 2140px;
   margin-top: 34px;
   margin-left: 303px;
 }
-.replay{
-width:710px;
-height:100px;
-margin-top: 30px;
-margin-left: 20px;
-background-color:rgba(244,244,244,1);
-border-top-left-radius: 8px;
-border-top-right-radius: 8px;
-border-bottom-left-radius: 8px;
-border-bottom-right-radius: 8px;
-border-top-style: solid;
-border-top-width: 1px;
-border-top-color: rgba(31,31,31,1);
-border-bottom-style: solid;
-border-bottom-width: 1px;
-border-bottom-color: rgba(31,31,31,1);
-border-left-style: solid;
-border-left-width: 1px;
-border-left-color: rgba(31,31,31,1);
-border-right-style: solid;
-border-right-width: 1px;
-border-right-color: rgba(31,31,31,1);
+.replay {
+  width: 710px;
+  height: 100px;
+  margin-top: 30px;
+  margin-left: 20px;
+  background-color: rgba(244, 244, 244, 1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(31, 31, 31, 1);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(31, 31, 31, 1);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: rgba(31, 31, 31, 1);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: rgba(31, 31, 31, 1);
 }
-.replayText{
-  font-size:36px;
-font-family:PingFang-SC-Medium;
-font-weight:500;
-color:rgba(102,102,102,1);
-line-height:36px;
-margin-left: 251px;
-margin-top: 33px
+.replayText {
+  font-size: 36px;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(102, 102, 102, 1);
+  line-height: 36px;
+  margin-left: 251px;
+  margin-top: 33px;
 }
-.bottombtn{
-width:710px;
-height:100px;
-margin-top: 129px;
-margin-left: 20px;
-background-color:rgba(31,31,31,1);
-border-top-left-radius: 8px;
-border-top-right-radius: 8px;
-border-bottom-left-radius: 8px;
-border-bottom-right-radius: 8px;
-border-top-style: solid;
-
+.bottombtn {
+  width: 710px;
+  height: 100px;
+  margin-top: 129px;
+  margin-left: 20px;
+  background-color: rgba(31, 31, 31, 1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-style: solid;
 }
-.bottomText{
-  font-size:36px;
-font-family:PingFang-SC-Medium;
-font-weight:500;
-color:rgba(200,175,112,1);
-line-height:36px;
-margin-left: 251px;
-margin-top: 33px
+.bottomText {
+  font-size: 36px;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(200, 175, 112, 1);
+  line-height: 36px;
+  margin-left: 251px;
+  margin-top: 33px;
 }
 </style>
 

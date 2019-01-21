@@ -662,6 +662,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .gobackStyle {
   margin-left: 34px;
@@ -856,6 +859,7 @@ export default {
   border-bottom-style: solid;
   border-bottom-width: 20px;
   position: relative;
+  margin-top: 95px;
 }
 .bgimg {
   width: 750px;

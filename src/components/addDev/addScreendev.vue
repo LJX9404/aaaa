@@ -50,6 +50,9 @@ export default {
    border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: rgba(206,215,219,1);
+    position:fixed;
+  top:0px;
+  overflow: hidden;
 }
 .navigatorTitle {
   font-size: 36px;
@@ -70,6 +73,7 @@ export default {
   width: 750px;
   height: 1206px;
   background-color:#fff;
+  margin-top: 95px
 }
 .navinfo {
   font-size: 31px;

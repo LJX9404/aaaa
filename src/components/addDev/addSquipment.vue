@@ -41,6 +41,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+    position:fixed;
+  top:0px;
+  overflow: hidden;
 }
 .navigatorTitle {
   font-size: 36px;
@@ -65,6 +68,7 @@ export default {
  min-height: 1206px;
   position: relative;
   background-color: #f4f4f4;
+  margin-top: 95px
 }
 .suqipment {
   width: 396px;

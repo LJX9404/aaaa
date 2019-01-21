@@ -446,6 +446,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+   position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .gobackStyle {
   margin-left: 34px;
@@ -484,6 +487,8 @@ margin-left: 213px
   border-top-style: solid;
   border-top-color: rgba(244, 244, 244, 1);
   border-top-width: 20px;
+  margin-top: 95px
+
 }
 .navtext {
   font-size: 32px;

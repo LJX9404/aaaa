@@ -46,7 +46,10 @@ export default {
   flex-wrap: nowrap;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-bottom-color: rgba(206,215,219,1);
+  border-bottom-color: rgba(206, 215, 219, 1);
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .navigatorTitle {
   font-size: 36px;
@@ -67,6 +70,7 @@ export default {
   width: 750px;
   height: 1206px;
   background-color: #fff;
+  margin-top: 95px
 }
 .navinfo {
   font-size: 35px;
@@ -124,12 +128,12 @@ export default {
 .setStyle {
   width: 36px;
   height: 34px;
-   margin-top: 5px
+  margin-top: 5px;
 }
 .set2Style {
   width: 35px;
   height: 26px;
-  margin-top: 10px
+  margin-top: 10px;
 }
 .bottombtn {
   width: 710px;

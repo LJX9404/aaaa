@@ -328,6 +328,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .gobackStyle {
   margin-left: 34px;
@@ -385,6 +388,7 @@ export default {
   border-bottom-color: rgba(244, 244, 244, 1);
   border-bottom-style: solid;
   border-bottom-width: 20px;
+  margin-top: 95px;
 }
 
 .BGC {

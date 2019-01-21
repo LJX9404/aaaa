@@ -54,6 +54,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+    position:fixed;
+  top:0px;
+  overflow: hidden;
 }
 .navigatorTitle {
   font-size: 36px;
@@ -74,6 +77,7 @@ export default {
   width: 750px;
   height: 1205px;
   background-color: rgba(244, 244, 244, 1);
+  margin-top: 95px
 }
 .mainpicBox {
   width: 396px;

@@ -64,12 +64,12 @@ let navigator = weex.requireModule("navigator");
 export default {
   components: { AmIcon },
   name: "steamMicro",
-  data(){
-    return{
+  data() {
+    return {
       selectpath: "caipu",
       moreSelect: "moreStyle",
       secondMenu: "secondStyle",
-       Menulists: [
+      Menulists: [
         {
           title: "测试",
           img: "/src/assets/caipu1.jpg"
@@ -86,12 +86,12 @@ export default {
           title: "测试",
           img: "/src/assets/caipu1.jpg"
         }
-      ],
-    }
+      ]
+    };
   },
   methods: {
     toBack: function() {
-           this.$router.go(-1);
+      this.$router.go(-1);
     },
     link: function(e) {
       this._data.selectpath = e;
@@ -140,7 +140,7 @@ export default {
           this.$router.push(e);
           break;
       }
-    },
+    }
   }
 };
 </script>
@@ -152,6 +152,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .gobackStyle {
   margin-left: 34px;
@@ -179,6 +182,7 @@ export default {
   border-bottom-style: solid;
   border-bottom-width: 20px;
   border-bottom-color: rgba(244, 244, 244, 1);
+  margin-top: 95px
 }
 .bgpic {
   width: 750px;
@@ -254,16 +258,16 @@ export default {
   margin-left: 59px;
   width: 2px;
   height: 80px;
-  background-image: linear-gradient(to top,#5A5A5A,#2E2D2F);
+  background-image: linear-gradient(to top, #5a5a5a, #2e2d2f);
   border-top-right-radius: 1px;
   border-top-left-radius: 1px;
 }
-.grap2{
+.grap2 {
   margin-top: -2px;
   margin-left: 59px;
   width: 2px;
   height: 80px;
-  background-image: linear-gradient(to top,#2E2D2F,#5A5A5A);
+  background-image: linear-gradient(to top, #2e2d2f, #5a5a5a);
   border-bottom-left-radius: 1px;
   border-bottom-right-radius: 1px;
 }
@@ -368,5 +372,4 @@ export default {
 .scroller {
   flex-direction: row;
 }
-
 </style>

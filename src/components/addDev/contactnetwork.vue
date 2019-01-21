@@ -4,7 +4,7 @@
           <am-icon type="left" size="md"  class="rightArrow"/>
          <text class="navigatorTitle">连接网络</text>
       </div>
-        <div>
+        <div class="container">
             <text class="navinfo">请输入无线网名称和密码</text>
             <input type="text" placeholder="网络名称" class="firstinput" :autofocus=false value=""/>
             <div class="grap"></div>
@@ -60,6 +60,12 @@ export default {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: rgba(206, 215, 219, 1);
+    position:fixed;
+  top:0px;
+  overflow: hidden;
+}
+.container{
+  margin-top: 95px
 }
 .rightArrow {
   margin-top: 34px;

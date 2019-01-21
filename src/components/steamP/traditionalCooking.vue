@@ -64,7 +64,7 @@
 </template>
 <script>
 let navigator = weex.requireModule("navigator");
-import { AmNavBar ,AmIcon} from "weex-amui";
+import { AmNavBar, AmIcon } from "weex-amui";
 import { AmPickerView } from "weex-amui";
 import { log, debug } from "util";
 const storage = weex.requireModule("storage");
@@ -644,7 +644,7 @@ const timesTwo = [
 ];
 var movePosition, startPosition, endPosition;
 export default {
-  components: { AmPickerView, AmNavBar ,AmIcon},
+  components: { AmPickerView, AmNavBar, AmIcon },
   name: "traditionalCooking",
   data() {
     return {
@@ -675,23 +675,20 @@ export default {
         order: "烹饪中",
         pattern: "普通蒸",
         status: "working",
-        descalingImg:false,
+        descalingImg: false,
         planDay: null,
         planTime: null
       }
     };
   },
-  mounted() {
-   
-  },
+  mounted() {},
   methods: {
     link: function(e) {
-       storage.setItem('cookTime', JSON.stringify(this.cookTime), event => {
-      })
+      storage.setItem("cookTime", JSON.stringify(this.cookTime), event => {});
       this.$router.push(e);
-    }, 
-     toBack: function() {
-           this.$router.go(-1);
+    },
+    toBack: function() {
+      this.$router.go(-1);
     },
     setValue: function(item) {
       this.cookTime.degreeCelsius = item[0]["value"] + "°C";
@@ -702,23 +699,20 @@ export default {
       storage.getItem("cookTime", event => {
         if (event.result == "success") {
           let temp = JSON.parse(event.data);
-           console.log( event);
-          if (temp.status=='plan') {
+          console.log(event);
+          if (temp.status == "plan") {
             this.cookTime.planDay = temp.planDay;
             this.cookTime.planTime = temp.planTime;
             this.cookTime.order = "预约中";
-            this.cookTime.status="plan";
+            this.cookTime.status = "plan";
           }
         }
-        console.log(this.cookTime, event,"-=-=-=-=-=-=-");
-        storage.setItem("cookTime", JSON.stringify(this.cookTime), event => {  
-          console.log(this.cookTime, 'ppppppppp');
+        console.log(this.cookTime, event, "-=-=-=-=-=-=-");
+        storage.setItem("cookTime", JSON.stringify(this.cookTime), event => {
+          console.log(this.cookTime, "ppppppppp");
           this.$router.go(-1);
-          });
-      
+        });
       });
-      
-      
     },
     ontouchstart: function(e) {
       console.log(JSON.stringify(e.changedTouches[0].pageX));
@@ -768,7 +762,7 @@ export default {
         case "除垢":
           this.btnInfo = "开始除垢";
           this.cookTime.order = "除垢中";
-          this.cookTime.descalingImg=true;
+          this.cookTime.descalingImg = true;
           break;
         case "解冻":
           this.btnInfo = "开始解冻";
@@ -777,7 +771,7 @@ export default {
         case "发酵":
           this.btnInfo = "开始发酵";
           this.cookTime.order = "发酵中";
-          this.cookTime.descalingImg=true;
+          this.cookTime.descalingImg = true;
           break;
       }
     }
@@ -792,6 +786,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .gobackStyle {
   margin-left: 34px;
@@ -823,6 +820,7 @@ export default {
   width: 750px;
   height: 420px;
   position: relative;
+  margin-top: 95px;
 }
 .bgimg {
   width: 750px;

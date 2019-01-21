@@ -79,9 +79,11 @@ export default {
   display: flex;
   flex-direction: row;
   text-align: center;
-  position: absolute;
-  /* position:fixed; */
+  /* position: absolute; */
+  position:fixed;
   top: 0px;
+  background-color: #fff;
+  overflow: hidden;
   border-bottom-style: solid;
   border-bottom-color: #ccc;
   border-bottom-width: 1px

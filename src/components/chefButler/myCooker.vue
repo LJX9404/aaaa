@@ -79,6 +79,9 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .gobackStyle {
   margin-left: 34px;
@@ -100,6 +103,7 @@ export default {
   padding-top: 20px;
   padding-left: 20px;
   padding-bottom: 20px;
+  margin-top: 95px;
 }
 .boxCommon {
   display: -ms-flex;

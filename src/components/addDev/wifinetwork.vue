@@ -44,7 +44,10 @@ export default {
   flex-wrap: nowrap;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-  border-bottom-color: rgba(206,215,219,1);
+  border-bottom-color: rgba(206, 215, 219, 1);
+  position: fixed;
+  top: 0px;
+  overflow: hidden;
 }
 .navigatorTitle {
   font-size: 36px;
@@ -65,6 +68,7 @@ export default {
   width: 750px;
   height: 1206px;
   background-color: #fff;
+  margin-top: 95px
 }
 .navinfo {
   font-size: 35px;
@@ -75,11 +79,11 @@ export default {
   margin-left: 89px;
 }
 .navinfo2 {
-  font-size:31px;
-font-family:PingFang-SC-Medium;
-font-weight:500;
-color:rgba(88,88,88,1);
-line-height:31px;
+  font-size: 31px;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: rgba(88, 88, 88, 1);
+  line-height: 31px;
   margin-top: 44px;
   margin-left: 207px;
 }
@@ -122,12 +126,12 @@ line-height:31px;
 .setStyle {
   width: 36px;
   height: 34px;
-   margin-top: 5px
+  margin-top: 5px;
 }
 .set2Style {
   width: 35px;
   height: 26px;
-  margin-top: 10px
+  margin-top: 10px;
 }
 .bottombtn {
   width: 710px;

@@ -23,6 +23,9 @@ import findDev from "@/components/addDev/findDev"
 import addSquipmentSuccess from "@/components/addDev/addSquipmentSuccess"
 import addSquipmentFail from "@/components/addDev/addSquipmentFail"
 import addSquipment from "@/components/addDev/addSquipment"
+import addSquipmentMore from "@/components/addDev/addSquipmentMore"
+import moreQuipmentBangding from "@/components/addDev/moreQuipmentBangding"
+import moreQuipment from "@/components/addDev/moreQuipment"
 import call400 from "@/components/addDev/call400"
 import someSuccess from "@/components/addDev/someSuccess"
 import addScreendev from "@/components/addDev/addScreendev"
@@ -191,6 +194,21 @@ module.exports = new Router({
       path: '/contactnetwork',
       name: 'contactnetwork',
       component: contactnetwork,
+    },
+    {
+      path: '/addSquipmentMore',
+      name: 'addSquipmentMore',
+      component: addSquipmentMore,
+    },
+    {
+      path: '/moreQuipmentBangding',
+      name: 'moreQuipmentBangding',
+      component: moreQuipmentBangding,
+    },
+    {
+      path: '/moreQuipment',
+      name: 'moreQuipment',
+      component: moreQuipment,
     }
   ]
 })
